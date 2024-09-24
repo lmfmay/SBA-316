@@ -17,28 +17,57 @@ let positionTop = 0;
 let positionLeft = 0;
 let canvasHeight = gameBoard.clientHeight;
 let canvasWidth = gameBoard.clientWidth;
+let foodPosTop = Math.floor(Math.random() * (canvasHeight/10)) *10 // ensures food placed in multiples of 10, then converting back to px
+let foodPosLeft = Math.floor(Math.random() * (canvasWidth/10)) *10
+
+setInterval(() => {
+    foodAppears()
+    }, 5000); // Interval set to 5 seconds
 
 // - Modify the style and/or CSS classes of an element in response to user interactions using the style or classList properties.
 function handleKeyDown(event) {
     const snakeMove = 10;
-    if (event.key == `ArrowDown` && positionTop <= canvasHeight-20) {
+    if (event.key == `ArrowDown` && positionTop <= canvasHeight-20) { //minus 2* snake size
             positionTop += snakeMove;
         }
-    else if (event.key == `ArrowUp` && positionTop >= 10) {
+    else if (event.key == `ArrowUp` && positionTop >= 10) { //minus snake size
         positionTop -= snakeMove;
         }
-    else if (event.key == `ArrowLeft` && positionLeft >= 10) {
+    else if (event.key == `ArrowLeft` && positionLeft >= 10) { //minus snake size
         positionLeft -= snakeMove;
         }
-    else if (event.key == `ArrowRight`&& positionLeft <= canvasWidth-20) {
+    else if (event.key == `ArrowRight`&& positionLeft <= canvasWidth-20) { //minus 2* snake size
         positionLeft += snakeMove;
         }
-        snake.style.top = positionTop + `px`;
-        snake.style.left = positionLeft + `px`;
-}
+    snake.style.top = positionTop + `px`;
+    snake.style.left = positionLeft + `px`;
+    
+    if (positionTop == foodPosTop && positionLeft == foodPosLeft){
+        foodVanish(); // Remove old food
+        foodAppears(); // Create new food
+        score.innerHTML = `Score: 1`
+    }
+    }
 // - Create at least one element using createElement.
-let food = document.createElement(`div`)
-// - Use appendChild and/or prepend to add new elements to the DOM.
+function foodAppears(){
+    let food = document.createElement(`div`);
+    food.classList.add(`food`);
+    foodPosTop = Math.floor(Math.random() * (canvasHeight/10)) *10 // ensures food placed in multiples of 10, then converting back to px
+    foodPosLeft = Math.floor(Math.random() * (canvasWidth/10)) *10
+    food.style.top = foodPosTop + `px`;
+    food.style.left = foodPosLeft + `px`;
+//Use appendChild and/or prepend to add new elements to the DOM.
+    gameBoard.appendChild(food);
+}
+
+function foodVanish(){
+    let existingFood = document.querySelectorAll(`.food`);
+    existingFood.forEach(food => { food.remove()
+    });
+}
+
+
+
 // - Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
 // - Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
     //change scores

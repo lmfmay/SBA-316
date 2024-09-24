@@ -1,6 +1,6 @@
 #gameArea {
-    height: 500px;
-    width: 500px;
+    height: 600px;
+    width: 600px;
     border: 1px solid black;
     margin: auto;
     position: relative;
@@ -30,4 +30,5 @@
     background-color: rgb(148, 63, 42);
     border: 1px solid black;
     border-radius: 50%;
+    position: absolute;
 }
