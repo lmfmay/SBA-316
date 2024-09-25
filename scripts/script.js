@@ -6,7 +6,8 @@ let snake = document.getElementById(`snake`);
 let head = snake.firstElementChild;
 // - Cache at least one element using querySelector or querySelectorAll.
 let box = document.querySelectorAll(`#box`);
-
+let startBtn = document.getElementById(`startGameBtn`);
+let player = document.getElementById()
 
 let score = 0;
 let positionTop = 0;
@@ -16,8 +17,9 @@ let canvasWidth = gameBoard.clientWidth;
 let foodPosTop = Math.floor(Math.random() * (canvasHeight/10)) *10 // ensures food placed in multiples of 10, then converting back to px
 let foodPosLeft = Math.floor(Math.random() * (canvasWidth/10)) *10
 
-// - Register at least two different event listeners and create the associated event handler functions.
-document.addEventListener('keydown',handleKeyDown)
+// Register at least two different event listeners and create the associated event handler functions.
+startBtn.addEventListener(`click`,startGame)
+document.addEventListener(`keydown`,handleKeyDown)
 foodAppears()
 // setInterval(() => {
 //     foodAppears()
@@ -65,6 +67,7 @@ function foodVanish(){
     });
 }
 
+// - Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
 function updateScore(){
     score++;
     let scoreBoard = document.getElementById(`score`);
@@ -72,14 +75,16 @@ function updateScore(){
 }
 
 // - Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
-// - Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
-    //change scores
 
-// - Modify at least one attribute of an element in response to user interaction.
-    //change state of snake body to visible
 
-// - Register at least two different event listeners and create the associated event handler functions.
-    //create click listener on start button
+
+// Modify at least one attribute of an element in response to user interaction.
+function startGame(){
+    snake.removeAttribute(`hidden`);
+    startBtn.setAttribute(`hidden`,`true`);
+}
+
+
 // - Use at least two Browser Object Model (BOM) properties or methods.
     //alert and prompt
 // - Include at least one form and/or input with HTML attribute validation.

@@ -32,3 +32,33 @@
     border-radius: 50%;
     position: absolute;
 }
+
+#startGameBtn {
+    /* position: absolute; */
+    /* top: 50%; */
+    height: 40px;
+    width: 100px;
+}
+
+#playerName {
+    /* position: absolute; */
+    /* top: 40%; */
+    height: 40px;
+    width: 300px;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    
+}
+
+#fieldSet {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 50vh;
+}

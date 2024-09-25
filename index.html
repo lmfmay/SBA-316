@@ -10,9 +10,15 @@
 <body>
     <main id="gameArea">
         <h1 id="score">Score: 0</h1>
-        <div id="snake">
+        <div id="fieldSet">
+            <form>
+                <input type="text" name="Player Name" id="playerName" placeholder="What's your name?">
+                <input type="button" value="Start Game" id="startGameBtn">
+            </form>
+        </div>
+        <div id="snake" hidden>
             <div id="snakeHead" class="box"></div>
-            <div id="snakeBody" class="box" hidden></div>
+            <!-- <div id="snakeBody" class="box" hidden></div> -->
         </div>
         <!-- <div class="food" hidden></div> -->
         
