@@ -37,4 +37,4 @@ This project showcases my capability to implement features of the Document Objec
     - **git remote -v # confirm the changes**
 
 ## Acknowledgements
-- 
+- https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model
