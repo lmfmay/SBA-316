@@ -13,6 +13,7 @@ let form = document.getElementsByTagName(`form`);
 let error = document.getElementById(`errorBox`);
 let scoreBoard = document.getElementById(`score`);
 
+
 let score = 0;
 let positionTop = 0;
 let positionLeft = 0;
@@ -27,6 +28,9 @@ form[0].addEventListener(`submit`,startGame)
 document.addEventListener(`keydown`,handleKeyDown)
 foodAppears()
 
+// setInterval(() => {
+//     foodAppears();
+// }, 5000);
 
 // - Modify the style and/or CSS classes of an element in response to user interactions using the style or classList properties.
 function handleKeyDown(event) {
@@ -46,12 +50,9 @@ function handleKeyDown(event) {
     snake.style.top = positionTop + `px`;
     snake.style.left = positionLeft + `px`;
     
-    if (positionTop == foodPosTop && positionLeft == foodPosLeft){
-        foodVanish(); // Remove old food
-        foodAppears(); // Create new food
-        updateScore(); // Update score
+    eatsFood();    
     }
-    }
+    
 // Create at least one element using createElement.
 function foodAppears(){
     let food = document.createElement(`div`);
@@ -62,12 +63,6 @@ function foodAppears(){
     food.style.left = foodPosLeft + `px`;
 //Use appendChild and/or prepend to add new elements to the DOM.
     gameBoard.appendChild(food);
-}
-
-function foodVanish(){
-    let existingFood = document.querySelectorAll(`.food`);
-    existingFood.forEach(food => { food.remove()
-    });
 }
 
 // Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
@@ -89,19 +84,23 @@ function startGame(event){
     player.setAttribute(`hidden`,`true`);
     consent.setAttribute(`hidden`,`true`);
     scoreBoard.innerHTML = `${player.value}'s Score: 0`;
+}
 
+// Iterate over a collection of elements to accomplish some task.
+function eatsFood() {
+    let foodCollection = document.querySelectorAll(`.food`);
+    foodCollection.forEach(food => {
+        if (snake.style.top == food.style.top && snake.style.left == food.style.left){
+            food.remove()
+            updateScore(); // Update score
+        };
+    });
 }
 
 // Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
 // - Use at least two Browser Object Model (BOM) properties or methods.
     //alert and prompt
-
-
 // - Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive partial credit).
 // - Commit frequently to the git repository.
 // - Include a README file that contains a description of your application.
 // - Level of effort displayed in creativity, presentation, and user experience.
-
-
-// - Iterate over a collection of elements to accomplish some task.
-    //for i in form...
