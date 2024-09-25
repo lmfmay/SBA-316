@@ -12,6 +12,8 @@ let consent = document.getElementById(`consent`);
 let form = document.getElementsByTagName(`form`);
 let error = document.getElementById(`errorBox`);
 let scoreBoard = document.getElementById(`score`);
+let stopGameBtn = document.getElementById(`stopGameBtn`);
+let gameOverMsg = document.getElementById(`gameOver`)
 
 
 let score = 0;
@@ -26,15 +28,16 @@ let foodPosLeft = Math.floor(Math.random() * (canvasWidth/10)) *10
 // Include at least one form and/or input with DOM event-based validation.
 // Use at least two Browser Object Model (BOM) properties or methods (alert method and document property in this case)
 window.alert(`Welcome to a never-ending game of snake. This snake never stops eating but it doesn't ever get longer. It is also really lazy and doesn't move unless directed, so use the arrow keys to control every step. When you get bored, just click the exit button to stop the game.`)
-form[0].addEventListener(`submit`,startGame)
-document.addEventListener(`keydown`,handleKeyDown)
+form[0].addEventListener(`submit`,startGame);
+document.addEventListener(`keydown`,handleKeyDown);
+stopGameBtn.addEventListener(`click`,stopGame);
 foodAppears()
 
-// setInterval(() => {
-//     foodAppears();
-// }, 5000);
+let foodInterval = setInterval(() => {
+ foodAppears();
+}, 5000);
 
-// - Modify the style and/or CSS classes of an element in response to user interactions using the style or classList properties.
+// Modify the style and/or CSS classes of an element in response to user interactions using the style or classList properties.
 function handleKeyDown(event) {
     const snakeMove = 10;
     if (event.key == `ArrowDown` && positionTop <= canvasHeight-20) { //minus 2* snake size
@@ -82,6 +85,7 @@ function startGame(event){
     } 
 // Modify at least one attribute of an element in response to user interaction.    
     snake.removeAttribute(`hidden`);
+    stopGameBtn.removeAttribute(`hidden`);
     startBtn.setAttribute(`hidden`,`true`);
     player.setAttribute(`hidden`,`true`);
     consent.setAttribute(`hidden`,`true`);
@@ -99,6 +103,11 @@ function eatsFood() {
     });
 }
 
+function stopGame() {
+    clearInterval(foodInterval)
+    snake.setAttribute(`hidden`,`true`);
+    gameOverMsg.style.display=`block`;
+}
 // Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
 // - Use at least two Browser Object Model (BOM) properties or methods.
     //alert and prompt

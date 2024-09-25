@@ -10,6 +10,7 @@
 <body>
     <main id="gameArea">
         <h1 id="score">Score: 0</h1>
+        <button id="stopGameBtn" hidden>Stop Game</button>
         <div id="fieldSet">
             <!-- Include at least one form and/or input with HTML attribute validation. -->
             <form>
@@ -20,14 +21,14 @@
                 <input type="submit" value="Start Game" id="startGameBtn">
             </form>
         </div>
-        <div id="errorBox">We want to know your name, challenger!</div>
+        <div id="errorBox" class="messageBox">We want to know your name, challenger!</div>
         <div id="snake" hidden>
             <div id="snakeHead" class="box"></div>
             <!-- <div id="snakeBody" class="box" hidden></div> -->
         </div>
         <div class="foodArray"></div>
-        
+        <div id="gameOver" class="messageBox">Game Over</div>
     </main>
-
+    
 </body>
 </html>
