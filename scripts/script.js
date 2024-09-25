@@ -23,6 +23,7 @@ let canvasHeight = gameBoard.clientHeight;
 let canvasWidth = gameBoard.clientWidth;
 let foodPosTop = Math.floor(Math.random() * (canvasHeight/10)) *10 // ensures food placed in multiples of 10, then converting back to px
 let foodPosLeft = Math.floor(Math.random() * (canvasWidth/10)) *10
+let foodInterval;
 
 // Register at least two different event listeners and create the associated event handler functions.
 // Include at least one form and/or input with DOM event-based validation.
@@ -31,11 +32,7 @@ window.alert(`Welcome to a never-ending game of snake. This snake never stops ea
 form[0].addEventListener(`submit`,startGame);
 document.addEventListener(`keydown`,handleKeyDown);
 stopGameBtn.addEventListener(`click`,stopGame);
-foodAppears()
 
-let foodInterval = setInterval(() => {
- foodAppears();
-}, 5000);
 
 // Modify the style and/or CSS classes of an element in response to user interactions using the style or classList properties.
 function handleKeyDown(event) {
@@ -90,6 +87,13 @@ function startGame(event){
     player.setAttribute(`hidden`,`true`);
     consent.setAttribute(`hidden`,`true`);
     scoreBoard.innerHTML = `${player.value}'s Score: 0`;
+
+    foodAppears()
+
+    foodInterval = setInterval(() => {
+    foodAppears();
+    }, 5000);
+
 }
 
 // Iterate over a collection of elements to accomplish some task.
@@ -103,14 +107,14 @@ function eatsFood() {
     });
 }
 
+// Stop game when stop game button is pressed.
 function stopGame() {
     clearInterval(foodInterval)
     snake.setAttribute(`hidden`,`true`);
     gameOverMsg.style.display=`block`;
 }
 // Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
-// - Use at least two Browser Object Model (BOM) properties or methods.
-    //alert and prompt
+
 
 
 
