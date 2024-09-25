@@ -2,17 +2,13 @@
 let gameBoard = document.getElementById(`gameArea`)
 // - Cache at least one element using selectElementById.
 let snake = document.getElementById(`snake`);
-let head = document.getElementById(`snakeHead`);
+// - Use the parent-child-sibling relationship to navigate between elements at least once (firstChild, lastChild, parentNode, nextElementSibling, etc.).
+let head = snake.firstElementChild;
 // - Cache at least one element using querySelector or querySelectorAll.
 let box = document.querySelectorAll(`#box`);
 
 
-// - Use the parent-child-sibling relationship to navigate between elements at least once (firstChild, lastChild, parentNode, nextElementSibling, etc.).
-let score = gameBoard.firstElementChild;
-
-// - Register at least two different event listeners and create the associated event handler functions.
-document.addEventListener('keydown',handleKeyDown)
-
+let score = 0;
 let positionTop = 0;
 let positionLeft = 0;
 let canvasHeight = gameBoard.clientHeight;
@@ -20,9 +16,12 @@ let canvasWidth = gameBoard.clientWidth;
 let foodPosTop = Math.floor(Math.random() * (canvasHeight/10)) *10 // ensures food placed in multiples of 10, then converting back to px
 let foodPosLeft = Math.floor(Math.random() * (canvasWidth/10)) *10
 
-setInterval(() => {
-    foodAppears()
-    }, 5000); // Interval set to 5 seconds
+// - Register at least two different event listeners and create the associated event handler functions.
+document.addEventListener('keydown',handleKeyDown)
+foodAppears()
+// setInterval(() => {
+//     foodAppears()
+//     }, 5000); // Interval set to 5 seconds
 
 // - Modify the style and/or CSS classes of an element in response to user interactions using the style or classList properties.
 function handleKeyDown(event) {
@@ -45,7 +44,7 @@ function handleKeyDown(event) {
     if (positionTop == foodPosTop && positionLeft == foodPosLeft){
         foodVanish(); // Remove old food
         foodAppears(); // Create new food
-        score.innerHTML = `Score: 1`
+        updateScore(); // Update score
     }
     }
 // - Create at least one element using createElement.
@@ -66,7 +65,11 @@ function foodVanish(){
     });
 }
 
-
+function updateScore(){
+    score++;
+    let scoreBoard = document.getElementById(`score`);
+    scoreBoard.innerHTML = `Score: ${score}`;
+}
 
 // - Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
 // - Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
