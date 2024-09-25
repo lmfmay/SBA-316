@@ -7,9 +7,11 @@ let head = snake.firstElementChild;
 // - Cache at least one element using querySelector or querySelectorAll.
 let box = document.querySelectorAll(`#box`);
 let startBtn = document.getElementById(`startGameBtn`);
-let player = document.getElementById(`playerName`).value;
+let player = document.getElementById(`playerName`);
+let consent = document.getElementById(`consent`);
 let form = document.getElementsByTagName(`form`);
 let error = document.getElementById(`errorBox`);
+let scoreBoard = document.getElementById(`score`);
 
 let score = 0;
 let positionTop = 0;
@@ -20,13 +22,11 @@ let foodPosTop = Math.floor(Math.random() * (canvasHeight/10)) *10 // ensures fo
 let foodPosLeft = Math.floor(Math.random() * (canvasWidth/10)) *10
 
 // Register at least two different event listeners and create the associated event handler functions.
-
+// Include at least one form and/or input with DOM event-based validation.
 form[0].addEventListener(`submit`,startGame)
 document.addEventListener(`keydown`,handleKeyDown)
 foodAppears()
-// setInterval(() => {
-//     foodAppears()
-//     }, 5000); // Interval set to 5 seconds
+
 
 // - Modify the style and/or CSS classes of an element in response to user interactions using the style or classList properties.
 function handleKeyDown(event) {
@@ -52,7 +52,7 @@ function handleKeyDown(event) {
         updateScore(); // Update score
     }
     }
-// - Create at least one element using createElement.
+// Create at least one element using createElement.
 function foodAppears(){
     let food = document.createElement(`div`);
     food.classList.add(`food`);
@@ -73,32 +73,30 @@ function foodVanish(){
 // Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
 function updateScore(){
     score++;
-    let scoreBoard = document.getElementById(`score`);
-    scoreBoard.innerHTML = `Score: ${score}`;
+    scoreBoard.innerHTML = `${player.value}'s Score: ${score}`;
 }
 
-// - Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
-
-
-
-// Modify at least one attribute of an element in response to user interaction.
 function startGame(event){
     event.preventDefault();
-    if (!player){
-        error.removeAttribute(`hidden`);
-    } return
+    error.style.display=`none`;
+    if (!player.value){
+        error.style.display=`block`;
+        return
+    } 
+// Modify at least one attribute of an element in response to user interaction.    
     snake.removeAttribute(`hidden`);
     startBtn.setAttribute(`hidden`,`true`);
-    playerName.setAttribute(`hidden`,`true`);
+    player.setAttribute(`hidden`,`true`);
+    consent.setAttribute(`hidden`,`true`);
+    scoreBoard.innerHTML = `${player.value}'s Score: 0`;
+
 }
 
-
+// Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
 // - Use at least two Browser Object Model (BOM) properties or methods.
     //alert and prompt
 
-    //enter name to start game
-// - Include at least one form and/or input with DOM event-based validation. (This can be the same form or input as the one above, but should include event-based validation in addition to the HTML attribute validation.)
-    // start button can be submit button. add event listener to ensure all fields populated before game starts.
+
 // - Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive partial credit).
 // - Commit frequently to the git repository.
 // - Include a README file that contains a description of your application.

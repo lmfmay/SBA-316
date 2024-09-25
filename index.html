@@ -14,13 +14,13 @@
             <!-- Include at least one form and/or input with HTML attribute validation. -->
             <form>
                 <input type="text" name="playerName" id="playerName" placeholder="What's your name?">
-                <fieldset> Are you ready to play a never-ending game of Snake?
-                    <input type="checkbox" name="consent" id="consent" required> 
+                <fieldset  id="consent"> Are you ready to play a never-ending game of Snake?
+                    <input type="checkbox" name="consent" required> 
                 </fieldset>
                 <input type="submit" value="Start Game" id="startGameBtn">
             </form>
         </div>
-        <div id="errorBox" hidden>We want to know your name, challenger!</div>
+        <div id="errorBox">We want to know your name, challenger!</div>
         <div id="snake" hidden>
             <div id="snakeHead" class="box"></div>
             <!-- <div id="snakeBody" class="box" hidden></div> -->
