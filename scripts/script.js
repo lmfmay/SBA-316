@@ -7,7 +7,9 @@ let head = snake.firstElementChild;
 // - Cache at least one element using querySelector or querySelectorAll.
 let box = document.querySelectorAll(`#box`);
 let startBtn = document.getElementById(`startGameBtn`);
-let player = document.getElementById(`playerName`)
+let player = document.getElementById(`playerName`).value;
+let form = document.getElementsByTagName(`form`);
+let error = document.getElementById(`errorBox`);
 
 let score = 0;
 let positionTop = 0;
@@ -18,7 +20,8 @@ let foodPosTop = Math.floor(Math.random() * (canvasHeight/10)) *10 // ensures fo
 let foodPosLeft = Math.floor(Math.random() * (canvasWidth/10)) *10
 
 // Register at least two different event listeners and create the associated event handler functions.
-startBtn.addEventListener(`submit`,startGame)
+
+form[0].addEventListener(`submit`,startGame)
 document.addEventListener(`keydown`,handleKeyDown)
 foodAppears()
 // setInterval(() => {
@@ -67,7 +70,7 @@ function foodVanish(){
     });
 }
 
-// - Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
+// Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
 function updateScore(){
     score++;
     let scoreBoard = document.getElementById(`score`);
@@ -79,7 +82,11 @@ function updateScore(){
 
 
 // Modify at least one attribute of an element in response to user interaction.
-function startGame(){
+function startGame(event){
+    event.preventDefault();
+    if (!player){
+        error.removeAttribute(`hidden`);
+    } return
     snake.removeAttribute(`hidden`);
     startBtn.setAttribute(`hidden`,`true`);
     playerName.setAttribute(`hidden`,`true`);
@@ -88,7 +95,7 @@ function startGame(){
 
 // - Use at least two Browser Object Model (BOM) properties or methods.
     //alert and prompt
-// - Include at least one form and/or input with HTML attribute validation.
+
     //enter name to start game
 // - Include at least one form and/or input with DOM event-based validation. (This can be the same form or input as the one above, but should include event-based validation in addition to the HTML attribute validation.)
     // start button can be submit button. add event listener to ensure all fields populated before game starts.
@@ -99,3 +106,4 @@ function startGame(){
 
 
 // - Iterate over a collection of elements to accomplish some task.
+    //for i in form...
