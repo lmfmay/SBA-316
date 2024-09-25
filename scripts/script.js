@@ -1,10 +1,10 @@
 
 let gameBoard = document.getElementById(`gameArea`)
-// - Cache at least one element using selectElementById.
+// Cache at least one element using selectElementById.
 let snake = document.getElementById(`snake`);
-// - Use the parent-child-sibling relationship to navigate between elements at least once (firstChild, lastChild, parentNode, nextElementSibling, etc.).
+// Use the parent-child-sibling relationship to navigate between elements at least once (firstChild, lastChild, parentNode, nextElementSibling, etc.).
 let head = snake.firstElementChild;
-// - Cache at least one element using querySelector or querySelectorAll.
+// Cache at least one element using querySelector or querySelectorAll.
 let box = document.querySelectorAll(`#box`);
 let startBtn = document.getElementById(`startGameBtn`);
 let player = document.getElementById(`playerName`);
@@ -24,6 +24,8 @@ let foodPosLeft = Math.floor(Math.random() * (canvasWidth/10)) *10
 
 // Register at least two different event listeners and create the associated event handler functions.
 // Include at least one form and/or input with DOM event-based validation.
+// Use at least two Browser Object Model (BOM) properties or methods (alert method and document property in this case)
+window.alert(`Welcome to a never-ending game of snake. This snake never stops eating but it doesn't ever get longer. It is also really lazy and doesn't move unless directed, so use the arrow keys to control every step. When you get bored, just click the exit button to stop the game.`)
 form[0].addEventListener(`submit`,startGame)
 document.addEventListener(`keydown`,handleKeyDown)
 foodAppears()
@@ -100,7 +102,6 @@ function eatsFood() {
 // Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
 // - Use at least two Browser Object Model (BOM) properties or methods.
     //alert and prompt
-// - Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive partial credit).
-// - Commit frequently to the git repository.
-// - Include a README file that contains a description of your application.
-// - Level of effort displayed in creativity, presentation, and user experience.
+
+
+
