@@ -56,7 +56,9 @@ function handleKeyDown(event) {
     }
     
 // Create at least one element using createElement.
+// Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content.
 function foodAppears(){
+    let fragment = document.createDocumentFragment(); 
     let food = document.createElement(`div`);
     food.classList.add(`food`);
     foodPosTop = Math.floor(Math.random() * (canvasHeight/10)) *10 // ensures food placed in multiples of 10, then converting back to px
@@ -64,7 +66,8 @@ function foodAppears(){
     food.style.top = foodPosTop + `px`;
     food.style.left = foodPosLeft + `px`;
 //Use appendChild and/or prepend to add new elements to the DOM.
-    gameBoard.appendChild(food);
+    fragment.appendChild(food);
+    gameBoard.appendChild(fragment);
 }
 
 // Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
@@ -92,7 +95,7 @@ function startGame(event){
 
     foodInterval = setInterval(() => {
     foodAppears();
-    }, 5000);
+    }, 4000);
 
 }
 
@@ -112,9 +115,7 @@ function stopGame() {
     clearInterval(foodInterval)
     snake.setAttribute(`hidden`,`true`);
     gameOverMsg.style.display=`block`;
-}
-// Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
-
+} 
 
 
 

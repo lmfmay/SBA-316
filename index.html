@@ -10,15 +10,17 @@
 <body>
     <main id="gameArea">
         <h1 id="score">Score: 0</h1>
-        <button id="stopGameBtn" hidden>Stop Game</button>
+        <button id="stopGameBtn" class="btn" hidden>Stop Game</button>
         <div id="fieldSet">
             <!-- Include at least one form and/or input with HTML attribute validation. -->
             <form>
                 <input type="text" name="playerName" id="playerName" placeholder="What's your name?">
-                <fieldset  id="consent"> Are you ready to play a never-ending game of Snake?
-                    <input type="checkbox" name="consent" required> 
-                </fieldset>
-                <input type="submit" value="Start Game" id="startGameBtn">
+                <label id="consent"> 
+                    Are you ready to play a never-ending game of Snake?
+                    <input type="checkbox" name="consent" required>
+                    YES
+                </label>
+                <input type="submit" value="Start Game" id="startGameBtn" class="btn">
             </form>
         </div>
         <div id="errorBox" class="messageBox">We want to know your name, challenger!</div>
@@ -27,7 +29,10 @@
             <!-- <div id="snakeBody" class="box" hidden></div> -->
         </div>
         <div class="foodArray"></div>
-        <div id="gameOver" class="messageBox">Game Over</div>
+        <div id="gameOver" class="messageBox">
+            <h1>Game Over</h1>
+            <p>I see you are bored. There are many better games out there, but thanks for playing anyway!</p>
+        </div>
     </main>
     
 </body>
