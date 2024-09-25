@@ -7,7 +7,7 @@ let head = snake.firstElementChild;
 // - Cache at least one element using querySelector or querySelectorAll.
 let box = document.querySelectorAll(`#box`);
 let startBtn = document.getElementById(`startGameBtn`);
-let player = document.getElementById()
+let player = document.getElementById(`playerName`)
 
 let score = 0;
 let positionTop = 0;
@@ -18,7 +18,7 @@ let foodPosTop = Math.floor(Math.random() * (canvasHeight/10)) *10 // ensures fo
 let foodPosLeft = Math.floor(Math.random() * (canvasWidth/10)) *10
 
 // Register at least two different event listeners and create the associated event handler functions.
-startBtn.addEventListener(`click`,startGame)
+startBtn.addEventListener(`submit`,startGame)
 document.addEventListener(`keydown`,handleKeyDown)
 foodAppears()
 // setInterval(() => {
@@ -82,6 +82,7 @@ function updateScore(){
 function startGame(){
     snake.removeAttribute(`hidden`);
     startBtn.setAttribute(`hidden`,`true`);
+    playerName.setAttribute(`hidden`,`true`);
 }
 
 
